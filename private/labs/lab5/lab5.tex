@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage[margin=1.5cm,bottom=2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage[export]{adjustbox}
+\pagestyle{fancy}
+
+\hypersetup{colorlinks=true,urlcolor=blue,urlbordercolor=blue}
+\begin{document}
+\fancyhead[L]{ \includegraphics[width=2cm]{../au_logo.png} }
+\fancyhead[R]{ENGR 2310: Computational Problem Solving}
+\fancyfoot[C]{\thepage}
+\vspace*{0cm}
+\begin{center}
+	{\LARGE \textbf{Lab 5}}\\
+	\vspace{.25cm}
+	%{\Large Basic Python}
+	%\vspace{0.25cm}
+	%{\Large Due: Friday, September 4}
+\end{center}
+
+\begin{enumerate}
+	\item Write a program which does the following:
+	\begin{enumerate}
+		\item Pick an integer number between 1-10 (don't tell the user what it is)
+		\item Have the user repeatedly guess until they pick the correct number
+	\end{enumerate}
+	\item Write a function which accepts any integer number as an input, and prints an integer number as an output. The function can do anything; your only goal is to make it hard for me to guess what your function is doing! Let the user repeatedly enter numbers to see what value your function evaluates, until they enter the number 999.
+	\item Write a program to print out the first $N$ terms of the \href{https://en.wikipedia.org/wiki/Fibonacci_number}{Fibonacci sequence}. Starting with 0 and 1, each subsequent number is given by the sum of the previous two. The beginning of the series thus looks like:
+	\begin{equation*}
+	0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
+	\end{equation*}
+	More concisely, the $n^\mathrm{th}$ number of the series $F_n$ is equal to:
+	\begin{equation*}
+	F_n = F_{n-1} + F_{n-2}
+	\end{equation*}
+	
+	Have the user tell you how many terms to print, then print the terms.
+\end{enumerate}
+
+\end{document}

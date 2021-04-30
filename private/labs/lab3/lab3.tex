@@ -1,0 +1,90 @@
+\documentclass{article}
+\usepackage[margin=1.5cm,bottom=2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage[export]{adjustbox}
+\pagestyle{fancy}
+
+\hypersetup{colorlinks=true,urlcolor=blue,urlbordercolor=blue}
+\begin{document}
+\fancyhead[L]{ \includegraphics[width=2cm]{../au_logo.png} }
+\fancyhead[R]{ENGR 2310: Computational Problem Solving}
+\fancyfoot[C]{\thepage}
+\vspace*{0cm}
+\begin{center}
+	{\LARGE \textbf{Lab 3}}\\
+	\vspace{.25cm}
+	%{\Large Basic Python}
+	%\vspace{0.25cm}
+	%{\Large Due: Friday, September 4}
+\end{center}
+
+\section*{Questions}
+\begin{enumerate}
+	\item What will this code output? (First predict, then check!)\\ \texttt{for i in range(2,14,3):}\\
+	\null\quad\texttt{print(i)}\\
+	Access this code \href{https://drive.google.com/file/d/1Vgx3xMf-leakZH7JsuG3AWKbhZk_M-Iz/view?usp=sharing}{here}
+	\item What will this code output? (First predict, then check!)\\
+	\texttt{number = 0}\\
+	\texttt{total\_sum = 0}\\
+	%\texttt{}\\
+	\texttt{print("Starting the loop now!")}\\
+	%\texttt{}\\
+	\texttt{while not number==0:}\\
+	\null\quad\texttt{number = float(input("Enter a number: "))}\\
+	\null\quad\texttt{if number==0:}\\
+	\null\quad\quad\texttt{break}\\
+	\null\quad\texttt{total\_sum += number}\\
+	\texttt{print(total\_sum)}\\
+	\\
+	What will the output be if the user enters (3,5,10,0,4,6)
+	\\ Access this code \href{https://drive.google.com/file/d/1xVFPgdcBwbSfDffBRs6MCMa71H9JUnLz/view?usp=sharing}{here}
+	
+	\item What is wrong with the following program?\\ \texttt{number = 0}\\
+	\texttt{while number < 100:}\\
+	\null\quad\texttt{if number \% 2:}\\
+		\null\quad\quad\texttt{continue}\\
+		\null\quad\texttt{print(number)}\\
+		\null\quad\texttt{number = number + 1}\\
+	Access this code \href{https://drive.google.com/file/d/1jHL78CYhemlJ3s4m5qehKsSCfctY9zag/view?usp=sharing}{here}
+		
+	\item Rewrite the following code fragment using a \texttt{break} statement and eliminating the \texttt{done} variable. Your code should behave identically to this code fragment.\\ \texttt{done = False}\\
+	\texttt{n = 0}\\
+	\texttt{m = 100}\\
+	\texttt{while not done and n != m:}\\
+	\null\quad\texttt{n = int(input())}\\
+	\null\quad\texttt{if n < 0:}\\
+	\null\quad\quad\texttt{done = True}\\
+	\null\quad\quad\texttt{print("n =", n)}\\
+	Access this code \href{https://drive.google.com/file/d/1KwygTfKY4ElVcE4FWrkCUfiXhfs8mJgo/view?usp=sharing}{here}
+	\item 
+	Rewrite the following code fragment so it eliminates the \texttt{continue} statement.\\
+	\texttt{x=5}\\
+	\texttt{while x > 0:}\\
+	\null\quad\texttt{y = int(input())}\\
+	\null\quad\texttt{if y == 25:}\\
+	\null\quad\quad\texttt{continue}\\
+	\null\quad\texttt{x -= 1}\\
+	\null\quad\texttt{print("x =", x)}\\
+	Access this code
+\href{https://drive.google.com/file/d/1_4lXimn7miTlqGtOP2JLUAhIumLbPkRN/view?usp=sharing}{here}
+\end{enumerate}
+
+
+\section*{Writing Programs}
+\begin{enumerate}
+\item Rewrite the program from \#1 of the section above using a \texttt{while} loop instead of a \texttt{for} loop
+\item One way to approximate the value of $\pi$ is to find a series which is known to converge to $\pi$ and calculate a numerical value. For example: the series: $1-\frac{1}{3}+\frac{1}{5}-\frac{1}{7}+\frac{1}{9}-...$ is known to converge to exactly $\frac{\pi}{4}$. Write a program which does the following:
+\begin{enumerate}
+	\item Have the user decide how many terms to include in the series
+	\item Add together all of those terms
+	\item Multiply the result by 4 to get an estimate of $\pi$ and print this value
+\end{enumerate}
+\item Write a program to ask the user to enter the digits of a binary number, one at a time, and then convert it to a decimal. The user keeps entering in digits until they enter one that is not either 1 or 0. To convert to a binary, multiply the first digit entered by $2^0$, the second digit by $2^1$, the third digit by $2^2$ etc and then add all of the numbers together.\\ Example: if the user enters ``1", then ``0", then ``1", then ``1": the decimal result is: $(1)(2^0) + (0)(2^1) + (1)(2^2) + (1)(2^3) = 13$
+\end{enumerate}
+
+\end{document}

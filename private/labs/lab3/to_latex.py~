@@ -1,0 +1,14 @@
+with open('range_1.py') as f:
+    lines = f.readlines()
+    for l in lines:
+        rawline = l.replace('\n','')
+        preamble = ''
+        while "    " in rawline:
+            rawline=rawline.replace("    ","",1)
+            preamble += '\quad'
+        if preamble:
+            preamble = r'\null' + preamble
+        print(preamble,end='')
+        print(r'\texttt{',end='')
+        print(rawline,end='')
+        print(r'}\\')

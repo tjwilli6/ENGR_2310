@@ -1,0 +1,94 @@
+\documentclass{article}
+\usepackage[margin=1.5cm,bottom=2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+\pagestyle{fancy}
+\usepackage{hyperref}
+\usepackage[export]{adjustbox}
+\pagestyle{fancy}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\hypersetup{colorlinks=true,urlcolor=blue,urlbordercolor=blue}
+\begin{document}
+\fancyhead[L]{ \includegraphics[width=2cm]{au_logo.png} }
+\fancyhead[R]{ENGR 2310: Computational Problem Solving}
+\fancyfoot[C]{\thepage}
+\vspace*{0cm}
+\begin{center}
+	{\LARGE \textbf{Project 2}}\\
+	\vspace{.25cm}
+	{\Large Realistic Projectile Motion}
+	%\vspace{0.25cm}
+	%{\Large Due: Friday, September 4}
+\end{center}
+
+\section*{Overview}
+You will write a program to calculate the trajectory of a massive projectile in the presence of a gravitational force and variable air density. The user will provide the launch speed $v_i$ and launch angle $\theta$; your program will do several things:
+\begin{enumerate}
+	\item Plot the trajectory $y$ vs $x$
+	\item Print the max height and horizontal distance traveled
+	\item Print the total time of flight
+\end{enumerate}
+You can assume that the projectile is being launched from (and lands on) the surface of the planet ($y_i=0$).
+
+\section*{Details}
+\subsection*{The derivative equations}
+While in flight, the forces acting on the projectile are: the gravitational force $-mg\hat{y}$, and the air resistance force $-\frac{1}{2}C\rho(y) A v^2 \hat{v}$. The air density $\rho$ is a function of $y$: $\rho(y)=\rho_0 e^{-\frac{y}{y_0}}$. The net force is therefore:
+\begin{align*}
+	F_x&=-\frac{1}{2}CA\rho_0 e^{-\frac{y}{y_0}}vv_x\\
+	F_y&=-mg-\frac{1}{2}CA\rho_0 e^{-\frac{y}{y_0}}vv_y\\
+	v&=\sqrt{v_x^2+v_y^2}
+\end{align*}
+These forces result in the following differential equations:
+\begin{align*}
+	\frac{dv_x}{dt}&=-\frac{1}{2m}CA\rho_0 e^{-\frac{y}{y_0}}vv_x\\
+	\frac{dv_y}{dt}&=-g-\frac{1}{2m}CA\rho_0 e^{-\frac{y}{y_0}}vv_y\\
+	\frac{dx}{dt}&=v_x\\
+	\frac{dy}{dt}&=v_y\\
+\end{align*}
+You will solve these equations to plot the trajectory of the projectile. Note that, if the initial velocity is $v_i$, and the launch angle is $\theta$, then the initial velocity in the $x$ direction is $v_{x,i}=v_i\cos{\theta}$, and in the $y$ direction: $v_{y,i}=v_i\sin{\theta}$\\
+\subsection*{Inputting the program parameters}
+Note that these equations depend on the following constants:
+\begin{itemize}
+	\item $m$: The mass of the projectile
+	\item $g$: The gravitational acceleration, equal to $9.8$ m/s$^2$ on Earth.
+	\item $C$: the \textit{drag coefficient}, a dimensionless constant used to modify air resistance
+	\item $A$: the cross-sectional area of the projectile
+	\item $\rho_0$: the atmospheric density at sea level
+	\item $y_0$: the \textit{scale height} of the atmosphere (at a height $y$, the atmospheric density is $1/e\approx0.36$ of its sea-level value $\rho_0$)
+\end{itemize}
+It would be tedious to ask the user to specify these every single time the program is run. However, we want these values to be able to change without editing the source code. Our solution will be to read them from a text file. All of these constants will be read from a separate configuration file which specifies these parameters with the following format: (download the file \href{https://drive.google.com/file/d/1s0viOy4BDs1apgjJRbNgL4hWFWN-P4xL/view?usp=sharing}{here})\\
+\texttt{\#This is a config file used for the program "projectile.py"}\\
+\texttt{}\\
+\texttt{\#Mass of projectile (kg)}\\
+\texttt{MASS  	   : 5}\\
+\texttt{}\\
+\texttt{\#Gravitational acceleration at surface of planet, m/s2}\\
+\texttt{GRAV\_ACCEL : 9.81}\\
+\texttt{}\\
+\texttt{\#Drag coeff, dimensionless}\\
+\texttt{DRAG\_COEFF : 1}\\
+\texttt{}\\
+\texttt{\#Cross-sectional area, m2}\\
+\texttt{AREA	   : 0.05}\\
+\texttt{}\\
+\texttt{\#Atmospheric density at sea level (kg/m3)}\\
+\texttt{DENSITY	   : 1.2}\\
+\texttt{}\\
+\texttt{\#Scale height of atmosphere}\\
+\texttt{SCALE\_HT   : 8.5e3}\\
+
+Your program should be able to read this file in order to determined the value of $m$, $g$, $C$, $A$, $\rho_0$, and $y_0$. Your program should also be able to skip comments in the file (ignore lines that begin with the \texttt{\#} character)
+\subsection*{Choosing $\Delta t$}
+We must choose $\Delta t$ so that $\frac{dv}{dt}$ is approximately flat over the interval. Since $\frac{dv}{dt}$ only changes with $v$ ($g$ is constant), we must choose a time interval $\Delta t$ over which changes in velocity are small.
+
+A good way to estimate this is to assume that the initial value of $\frac{dv}{dt}$ is constant, so that $t_0\approx v_i/\frac{dv_i}{dt}$ is the time required for this constant force to bring the velocity all the way down to zero. Do this separately in each direction:
+\begin{align*}
+	t_{0,x}&\approx \frac{v_{x,i}}{\frac{1}{2m}CA\rho_0 v_i^2}\\
+	t_{0,y}&\approx \frac{v_{y,i}}{\frac{1}{2m}CA\rho_0 v_i^2+g}
+\end{align*}
+Let $t_0$ be the minimum of $(t_{0,x}$, $t_{0,y}$), then choose $\Delta t$ so that $\Delta t<<t_0$ (say, $\Delta t\approx \frac{t_0}{100}$)
+\section*{Requirements}
+Your program should follow the style and readability guidelines detailed \href{https://drive.google.com/file/d/1SFf6Rhv8LydlrUhf85QhMuiZb_IKRS4N/view?usp=sharing}{here}
+\end{document}

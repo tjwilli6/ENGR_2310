@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage[margin=1.5cm,bottom=2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+\pagestyle{fancy}
+
+\begin{document}
+\fancyhead[L]{ \includegraphics[width=2cm]{au_logo.png} }
+\fancyhead[R]{ENGR 2310: Computational Problem Solving}
+\fancyfoot[C]{\thepage}
+\vspace*{0cm}
+\begin{center}
+	{\LARGE \textbf{Homework 1}}\\
+	\vspace{.25cm}
+	{\Large Conditional Logic}
+	%\vspace{0.25cm}
+	%{\Large Due: Friday, September 4}
+\end{center}
+
+\section*{Solving Quadratic Equations}
+We want to write a program which does the following:
+\begin{enumerate}
+	\item Have the user input the coefficients $a$,$b$, and $c$ for a quadratic equation of the form $ax^2+bx+c=0$
+	\item Print the solution to the equation
+\end{enumerate}
+For certain combinations of $a$,$b$, and $c$, the two solutions are: $x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$. This solution breaks down, however, if $a=0$, or if the term under the square root (the ``discriminant'') is negative. We therefore need to consider a number of different cases in order to solve the equation for all possible values of $a$,$b$, and $c$.
+
+In your program, make sure to account for the following cases:
+
+\begin{itemize}
+	\item If $a=0$, then the quadratic equation becomes linear: $bx+c=0$, which has only one solution: $x=-c/b$ ( you may assume that $b$ is not also zero)
+	\item If $a$ is not $0$, then there are two additional cases:
+	\begin{itemize}
+		\item The discriminant $b^2-4ac\geq0$, in which case the two solutions are given by the quadratic formula
+		\item The discriminant $b^2-4ac<0$, in which case the solution is complex; do not attempt to solve, simply print a message to the user stating that the solution is complex.
+	\end{itemize}
+\end{itemize}
+
+\end{document}

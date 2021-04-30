@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage[margin=1.5cm,bottom=2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+\pagestyle{fancy}
+\usepackage{multicol}
+%\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
+
+\begin{document}
+\fancyhead[L]{ \includegraphics[width=2cm]{au_logo.png} }
+\fancyhead[R]{ENGR 2310: Computational Problem Solving}
+\fancyfoot[C]{\thepage}
+\vspace*{0cm}
+\begin{center}
+	{\LARGE \textbf{Quiz 2}}\\
+	\vspace{.25cm}
+	%{\Large Conditional Logic}
+	%\vspace{0.25cm}
+	%{\Large Due: Friday, September 4}
+\end{center}
+
+\begin{enumerate}
+	\item What does the following sample of code print? (If you think it will cause an error, say so)\\ \texttt{speed = 15}\\
+	\texttt{time = 2}\\
+	\texttt{dist = speed * time}\\
+	\texttt{}\\
+	\texttt{def calc\_dist(speed,time):}\\
+	\null\quad\quad\texttt{dist = speed * time}\\
+	\null\quad\quad\texttt{return dist}\\
+	\texttt{}\\
+	\texttt{speed = speed * 2}\\
+	\texttt{calc\_dist(speed,time)}\\
+	\texttt{}\\
+	\texttt{print(dist)}\\
+	{\bfseries \color{ForestGreen} Answer: \texttt{dist} was last assigned to on line 3, and functions cannot alter the value of global variables outside of the function, so the program prints 30}
+	\item What does the following sample of code print? (If you think it will cause an error, say so)\\ 
+\texttt{def collatz(number):}\\
+\null\quad\quad\texttt{if number \% 2:}\\
+	\null\quad\quad\quad\quad\texttt{result = 3 * number + 1}\\
+	\null\quad\quad\texttt{else:}\\
+	\null\quad\quad\quad\quad\texttt{result = number / 2}\\
+	\null\quad\quad\texttt{return result}\\
+	\null\quad\quad\quad\quad\texttt{}\\
+	\texttt{number = 15}\\
+	\texttt{collatz(number)}\\
+	\texttt{print("The result is:",result)}\\
+	{\bfseries \color{ForestGreen} Answer: This code will result in a \texttt{NameError}, since \texttt{result} is destroyed after the function returns.}
+	\item Consider the following program:\\
+	\texttt{g = 10}\\
+	\texttt{}\\
+	\texttt{def max\_height(vi,theta):}\\
+	\null\quad\quad\texttt{math.radians(theta)}\\
+	\null\quad\quad\texttt{vy = vi * math.sin(theta)}\\
+	\null\quad\quad\texttt{h = vy**2 / 2 / g}\\
+	\null\quad\quad\texttt{return h}\\
+	\texttt{}\\
+	\texttt{theta = 30 \#launch angle, in degrees}\\
+	\texttt{vi = 10 \#intl speed, m/s}\\
+	\begin{enumerate}
+		\item Write some code to finish the program (that is, call the function and print the result)
+		{\bfseries \color{ForestGreen} Answer:\\ \texttt{ymax = max\_height(vi,theta)}\\\texttt{print(ymax))}}
+		\item With the given numbers for \texttt{vi} and \texttt{theta}, the programmer expected \texttt{max\_height} to evaluate to ``2.5'', but finds instead the result is something completely different. Where is the error?\\
+		{\bfseries \color{ForestGreen} Answer: The programmer meant to convert \texttt{theta} to radians with the line \texttt{math.radians(theta)}, but this does not alter the value of \texttt{theta}. They should have used an assignment statement such as \texttt{theta\_radian=math.radians(theta)} and then used \texttt{theta\_radian} for the rest of the function. }
+	\end{enumerate}
+\end{enumerate}
+\end{document}

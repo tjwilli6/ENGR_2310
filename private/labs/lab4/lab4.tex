@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage[margin=1.5cm,bottom=2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage[export]{adjustbox}
+\pagestyle{fancy}
+
+\hypersetup{colorlinks=true,urlcolor=blue,urlbordercolor=blue}
+\begin{document}
+\fancyhead[L]{ \includegraphics[width=2cm]{../au_logo.png} }
+\fancyhead[R]{ENGR 2310: Computational Problem Solving}
+\fancyfoot[C]{\thepage}
+\vspace*{0cm}
+\begin{center}
+	{\LARGE \textbf{Lab 4}}\\
+	\vspace{.25cm}
+	%{\Large Basic Python}
+	%\vspace{0.25cm}
+	%{\Large Due: Friday, September 4}
+\end{center}
+
+\section*{Questions}
+\begin{enumerate}
+	\item What will this code output? (First predict, then check!)\\
+	\texttt{def greet():}\\
+	\null\quad\texttt{print("Hello!")}\\
+	\texttt{}\\
+	\texttt{print("What's up?")}\\
+		Access this code \href{https://drive.google.com/file/d/1E3bcdBPJzZ3XdDHAZoqRmL6b_PFArfmh/view?usp=sharing}{here}
+	\item Consider the following program:\\
+	\texttt{def print\_greetings(name):}\\
+	\null\quad\texttt{print("Hello, ",name)}\\
+	\texttt{}\\
+	\texttt{print\_greetings("Pam")}\\
+	Access this code \href{https://drive.google.com/file/d/1datgwaYyWWi5tQ8OYvKllhb2piJZYZbX/view?usp=sharing}{here}
+	\begin{enumerate}
+		\item What is the argument to the function call? What is the function parameter?
+		\item Modify the program to create a variable, \texttt{name = "Pam"}, and send this variable as the argument to the \texttt{print\_greetings} function. Does sending the argument as a variable affect your program?
+		\item Modify the program once more. Remove the \texttt{name = "Pam"} statement, and add a \texttt{person = "Pam"}. Now pass \texttt{person} as the argument. Does it matter that the argument variable (\texttt{person}) has a different name than the function parameter (\texttt{name})?
+	\end{enumerate}
+	\item The programmer was expecting this program to print 200. What does it print instead?\\\texttt{def proc(x):}\\
+	\null\quad\texttt{x = 2 * x * x}\\
+	\texttt{}\\
+	\texttt{def main():}\\
+	\null\quad\texttt{num = 10}\\
+	\null\quad\texttt{proc(num)}\\
+	\null\quad\texttt{print(num)}\\
+	\texttt{}\\
+	\texttt{main()}\\
+		Access this code \href{https://drive.google.com/file/d/1MGlbId_BLjoFRdNz8qp-OS1lGKVOViBQ/view?usp=sharing}{here}
+	\item What will be printed by the following program? (First predict, then check!)\\
+	\texttt{def addnumbers(num1,num2):}\\
+	\null\quad\texttt{print("Sum is: ", num1 + num2)}\\
+	\texttt{}\\
+	\texttt{addnumbers(2,3)}\\
+	\item What will be printed by the following program? (First predict, then check!)\\
+	\texttt{def addnumbers(num1,num2):}\\
+	\null\quad\texttt{print("Sum is: ", num1 + num2)}\\
+	\texttt{}\\
+	\texttt{addnumbers(5,7,2)}\\
+	\item What will be printed by the following program? (First predict, then check!)\\
+	\texttt{def addnumbers(num1,num2):}\\
+	\null\quad\texttt{print("Sum is: ", num1 + num2)}\\
+	\texttt{}\\
+	\texttt{addnumbers(4)}\\
+	\item What will this program print? (First predict, then check!)\\
+	\texttt{def proc():}\\
+	\null\quad\texttt{name = "Toby"}\\
+	\texttt{}\\
+	\texttt{name = "Taylor"}\\
+	\texttt{proc()}\\
+	\texttt{print(name)}\\
+	Access this code \href{https://drive.google.com/file/d/1C2JdkQ23hZkatLRrj7PbGVye3sl6ZVFJ/view?usp=sharing}{here}
+\end{enumerate}
+
+
+\section*{Writing Programs}
+\begin{enumerate}
+\item Write a program to print the value of gravitational acceleration $g$ on any planet, given values for the planet's mass and radius. Use a function to perform the calculation. The user should input the mass and radius, and then these values should be passed as arguments to the function.
+\begin{equation*}
+g=\frac{GM}{R^2}
+\end{equation*}
+Where $G$ is Newton's constant: $G\approx6.7\times10^{-11}$ N$\cdot$m$^2\cdot$kg$^{-2}$. Verify that $g\approx9.8$ m$\cdot$s$^{-2}$ for Earth ($R\approx6.4\times10^6$ m, $M\approx6\times10^{24}$ kg) \textit{Note: To input numbers this large and have them successfully convert to floats, use ``e notation'', so $6\times10^{24}$ becomes 6e24. You are also free to type a 6 followed by 24 zeros.}
+
+\item Modify your quadratic equation code to use a function, \texttt{solve\_quadratic(a,b,c)} which takes 3 numbers as parameters and prints the solution to the quadratic equation $ax^2+bx+c=0$ (you can and should use the code you've already written, just turn it into a function)
+\end{enumerate}
+
+\end{document}

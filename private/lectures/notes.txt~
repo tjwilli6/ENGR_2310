@@ -1,0 +1,15 @@
+def myfunc(x):
+    return 2 * x
+
+xi = 0
+xf = 3
+n = 10
+
+dx = (xf - xi) / n
+total = 0
+for i in range(n):
+    x = xi + i * dx
+    y = myfunc(x)
+    area = y * dx
+    total += area
+print(total)

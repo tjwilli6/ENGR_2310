@@ -1,0 +1,53 @@
+\documentclass{article}
+\usepackage[margin=1.5cm,bottom=2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+\pagestyle{fancy}
+\usepackage{hyperref}
+\usepackage[export]{adjustbox}
+\pagestyle{fancy}
+\usepackage{xcolor}
+\hypersetup{colorlinks=true,urlcolor=blue,urlbordercolor=blue}
+
+\begin{document}
+\fancyhead[L]{ \includegraphics[width=2cm]{au_logo.png} }
+\fancyhead[R]{ENGR 2310: Computational Problem Solving}
+\fancyfoot[C]{\thepage}
+\vspace*{0cm}
+\begin{center}
+	{\LARGE \textbf{Style and Readability Guidelines}}\\
+	\vspace{.25cm}
+	%{\Large Projectile Motion}
+	%\vspace{0.25cm}
+	%{\Large Due: Friday, September 4}
+\end{center}
+
+\section*{Code Organization}
+Your .py file should be organized in the following way:
+\begin{itemize}
+	\item A commented header stating your name, the date, and a brief overview of the code
+	\item Import any modules you will need 
+	\item Create any constant, global variables
+	\item Define all functions used by your program
+	\item Your actual program code, inside a function called \texttt{main()}
+	\item The last line in your file is a simple call to \texttt{main()}
+\end{itemize}
+\section*{Readability}
+When possible, pick variable and function names whose meaning is obvious. Organize code into functions when possible. Don't use them for \textit{everything}.
+\subsection*{When to use a function}
+\begin{itemize}
+\item If you find yourself copying and pasting code, definitely use a function!
+\item If you think you might reuse that code in the future, even if your current program doesn't, you should use a function
+\item If a calculation takes several lines, depends on just a few variables, and results in a single value, that's a good sign that you should use a function
+\end{itemize}
+\section*{Comments and Doc strings}
+As a general rule, write comments as if someone else (who knows Python, but has never met you) needs to understand your program.
+This includes:
+\begin{itemize}
+	\item Commenting when introducing a new variable (unless the variable name makes it obvious, like \texttt{PI=3.14})
+	\item Commenting to explain the harder-to-understand parts of your code (what is this if statement doing? Why are we looping here?)
+\end{itemize}
+\section*{Example}
+See an example file that follows these guidelines \href{https://drive.google.com/file/d/1GPYnWsq01MTotlsTjylKzifQ6dDCEbD2/view?usp=sharing}{here}
+\end{document}

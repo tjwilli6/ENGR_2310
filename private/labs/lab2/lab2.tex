@@ -1,0 +1,86 @@
+\documentclass{article}
+\usepackage[margin=1.5cm,bottom=2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+\pagestyle{fancy}
+
+\begin{document}
+\fancyhead[L]{ \includegraphics[width=2cm]{../au_logo.png} }
+\fancyhead[R]{ENGR 2310: Computational Problem Solving}
+\fancyfoot[C]{\thepage}
+\vspace*{0cm}
+\begin{center}
+	{\LARGE \textbf{Lab 2}}\\
+	\vspace{.25cm}
+	%{\Large Basic Python}
+	%\vspace{0.25cm}
+	%{\Large Due: Friday, September 4}
+\end{center}
+
+\section*{Predicting Program Output}
+For the following programs, examine the code and, without running it, predict what the output will be. Then run the code and compare the result with your prediction. If you think the code will produce an error, then say so (and identify the cause of the error).
+
+\begin{enumerate}
+\item \texttt{a = 13\\b = 21\\c = -4\\ print(b>a and b>c)}
+\item A police officer is writing a program to determine whether or not to pull someone over for speeding.\\ \\ \texttt{speed\_limit = 35}\\ \texttt{speed = float(input("Enter your speed"))\\if speed > speed\_limit - 5 and speed < speed\_limit + 5:\\ \null\quad print("Car is driving within the speed limit")}\\\texttt{elif speed < speed\_limit - 5:}\\ \null\quad\texttt{print("Car is driving too slowly!")}\\ \texttt{else:}\\ \null\quad\texttt{print("Car is speeding! Get them!")}\\ \\
+What will the output be if \texttt{speed} is 29? 37? 56?
+
+\item \texttt{miles = float(input("Enter the car's mileage"))}\\ \texttt{age = float(input("Enter the car's age"))}\\ \texttt{mpg = float(input("Enter the car's fuel efficiency (miles per gallon)"))}\\ \texttt{price = float(input("Enter the price of the car"))}\\
+\texttt{buyCar = False}\\
+\texttt{if price > 30000:}\\ \null\quad\texttt{buyCar = False}\\
+\texttt{else:}\\
+\null\quad\texttt{if price > 20000:}\\ 
+\null\quad\quad\texttt{if miles < 15000 and age < 5:}\\ \null\quad\quad\quad\texttt{buyCar = True}\\ \\ \null\quad\quad \texttt{elif mpg > 45 and age < 5:}\\ \null\quad\quad\quad\texttt{buyCar = True}\\ \null\quad\texttt{elif price >10000:}\\ \null\quad\quad\texttt{if miles < 30000 and age < 8:}\\ \null\quad\quad\quad\texttt{buyCar = True}\\ \null\quad\texttt{else:}\\ \null\quad\quad\texttt{if miles < 50000 and age < 10:}\\\null\quad\quad\quad \texttt{if mpg > 25:}\\ \null\quad\quad\quad\quad\texttt{buyCar = True}\\ \\
+What will be the value stored in the variable \texttt{buyCar} for each of the following scenarios?
+\begin{enumerate}
+	\item price = 25000, miles = 34000, mpg = 36, age = 7
+	\item price = 22000, miles = 13000, mpg = 47, age = 4
+	\item price = 8000, miles = 46000, age = 9, mpg = 23
+	\item price = 15000, miles = 27500, age = 7
+\end{enumerate}
+
+\item 
+\texttt{a = int(input("Enter any number: "))}\\
+\texttt{b = int(input("Enter another number: "))}\\
+\texttt{c = int(input("Enter one more number: "))}\\
+\texttt{if b > c or a = b:}\\
+\null\quad\texttt{print("Either b>c, or a = b")}
+
+What is the result of this code if: a = 13, b = -4, c = 9
+\end{enumerate}
+
+\section*{Writing Small Programs}
+\begin{enumerate}
+\item Write a program that prompts the user to enter a number, and then prints whether the number is positive, negative, or zero.
+\item We want to write a program to determine if the absolute value of a number falls within a given range. Recall that, for any number $x$, $|x|$ is within $a$ and $b$ if either: $x>a$ and $x<b$, OR $x<-a$ and $x>-b$. More compactly: $a<|x|<b$ if $a<x<b$ or if $-b<x<-a$. Using this information, write a program which prompts the user to enter a number, and then check if the absolute value of that number falls within the interval (50,100). \\ \textit{Note: this algorithm can be simplified with some clever usage of the ``**'' operator. Since the purpose of this exercise is to practice boolean expressions, refrain from using this operator for this exercise}.
+\end{enumerate}
+\section*{Find the Problem}
+\begin{enumerate}
+	\item The goal of this program is to have the user enter in two numbers, and then take the ratio of the two numbers. The program first checks to make sure the denominator is not 0. There is an error in the logic of the code somewhere (the program will run, but it doesn't work as it is intended to). Find the error and state how to modify the program so that it runs as intended.
+	
+	\texttt{a = float(input("Enter the first number: "))}\\
+	\texttt{b = float(input("Enter the second number: "))}\\
+	\texttt{if b==0:}\\
+	\null\quad\texttt{print("Cannot divide by zero!")}\\
+	\texttt{ratio = a / b}\\
+	\texttt{print(a,"divided by",b,"is",ratio)}
+	\item The goal of this program is the following: have the user enter a name and a password. If the name entered matches ``Dwight'' and the password is ``beets'', then print a welcome message. If not, print a message that either the username or password is incorrect. There is an error in the logic of the code somewhere (the program will run, but it doesn't work as it is intended to). Find the error and state how to modify the program so that it runs as intended.
+	
+	\texttt{username\_correct = `Dwight'}\\
+	\texttt{pwd\_correct = `beets'}\\
+	\texttt{username = input(`Enter your username: ')}\\
+	\texttt{pwd = input(`Enter your password: ')}\\ \\
+	\texttt{if username == username\_correct:}\\
+	\null\quad\texttt{authenticate = True}\\
+	\texttt{elif pwd == pwd\_correct:}\\
+	\null\quad\texttt{authenticate = True}\\
+	\texttt{else:}\\
+	\null\quad\texttt{authenticate = False}\\ \\
+	\texttt{if authenticate:}\\
+	\null\quad\texttt{print("Welcome, ", username)}\\
+	\texttt{else:}\\ 
+	\null\quad\texttt{print("Authentication failed")}
+	
+\end{enumerate}
+\end{document}

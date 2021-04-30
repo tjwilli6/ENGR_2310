@@ -1,0 +1,19 @@
+#This is a config file used for the program "projectile.py"
+
+#Mass of projectile (kg)
+MASS  	   : 5
+
+#Gravitational acceleration at surface of planet, m/s2
+GRAV_ACCEL : 9.81
+
+#Drag coeff, dimensionless
+DRAG_COEFF : 1
+
+#Cross-sectional area, m^2
+AREA	   : 0.05
+
+#Atmospheric density at sea level (kg/m3)
+DENSITY	   : 1.2
+
+#Scale height of atmosphere
+SCALE_HT   : 8.5e3

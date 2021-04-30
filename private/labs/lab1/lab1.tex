@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage[margin=1.5cm,bottom=2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+\pagestyle{fancy}
+
+\begin{document}
+\fancyhead[L]{ \includegraphics[width=2cm]{au_logo.png} }
+\fancyhead[R]{ENGR 2310: Computational Problem Solving}
+\fancyfoot[C]{\thepage}
+\vspace*{0cm}
+\begin{center}
+	{\LARGE \textbf{Lab 1}}\\
+	\vspace{.25cm}
+	{\Large Basic Python}
+	%\vspace{0.25cm}
+	%{\Large Due: Friday, September 4}
+\end{center}
+
+\section*{Overview}
+We haven't learned enough Python yet to write long programs. For this lab we will walk through several smaller exercises.
+
+\section*{Predicting Program Output}
+For the following programs, examine the code and, without running it, predict what the output will be. Then run the code and compare the result with your prediction. If you think the code will produce an error, then say so (and identify the cause of the error).
+
+\begin{enumerate}
+	\item \texttt{x=3\\
+	y=-4\\z=5\\magnitude=(x**2 + y**2 + z**2)**0.5\\print(magnitude)}
+	\item \texttt{message1 = `hello'\\message2 = `world'\\total\_message=message1 + ` '+ message2}
+	\item \texttt{distance = 10 m\\time = 5 s\\speed = distance / speed\\print(speed)}
+	\item \texttt{mass = 10\\ speed = 45\\ mass = 20\\momentum = mass * speed\\mass = 12\\print(momentum)\\momentum = 0\\print(momentum)}
+	\item \texttt{num1=12\\num2=15\\num1+num2=num3\\print(num3)}
+	\item \texttt{print(`hello' * 5)}
+	\item \texttt{x0=12 x1=20 dt=5\\avg\_speed=(x1-x0)/dt\\print(avg\_speed)}
+\end{enumerate}
+
+\section*{Writing Small Programs}
+\begin{enumerate}
+	\item Write a program to calculate the volume of a sphere of radius 5 cm ($V_\mathrm{sphere}=\frac{4}{3}\pi r^3$)
+	\item Write a Python program to use the quadratic formula to find the two solutions to the following equation: \\$3x^2 -12x + 5 = 0$\\As a reminder the two solutions to the quadratic equation are given by: $x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$, if the equation is of the form $ax^2+bx+c=0$.
+	\item A rocket moves through outer space with a velocity $\vec{v}=<7500,1300,-1000>$ m/s. Write a Python program to print the components of the unit vector $\hat{v}$ representing the direction of the rocket's velocity.
+	\item A projectile starts at the position $\vec{r}_1=<0,-3,4>$ m, and over the course of 13 seconds moves to a new position $\vec{r}_2=<10,-1,6>$ m. Write a Python program to print out the vector components of the average velocity:\\ $\vec{v}_\mathrm{avg}=\frac{\vec{r}_f-\vec{r}_i}{\Delta t}$
+\end{enumerate}
+\end{document}

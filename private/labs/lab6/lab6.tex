@@ -1,0 +1,77 @@
+\documentclass{article}
+\usepackage[margin=1.5cm,bottom=2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage[export]{adjustbox}
+\pagestyle{fancy}
+
+\hypersetup{colorlinks=true,urlcolor=blue,urlbordercolor=blue}
+\begin{document}
+\fancyhead[L]{ \includegraphics[width=2cm]{../au_logo.png} }
+\fancyhead[R]{ENGR 2310: Computational Problem Solving}
+\fancyfoot[C]{\thepage}
+\vspace*{0cm}
+\begin{center}
+	{\LARGE \textbf{Lab 6}}\\
+	\vspace{.25cm}
+	%{\Large Basic Python}
+	%\vspace{0.25cm}
+	%{\Large Due: Friday, September 4}
+\end{center}
+\section*{Questions}
+Unless otherwise indicated, the code samples below do not contain any errors. If you experience an error when you run the code, this is due to a copy/paste error.
+\begin{enumerate}
+	\item Predict what the following code snippet will print (explain your reasoning). Then run the code and test your prediction. If your prediction was wrong, explain why. Ask your instructor if you are unsure.\\ \\
+	\texttt{def function():}\\
+	\null\quad\texttt{number = 5}\\
+	\null\quad\texttt{print(number)}\\
+	\texttt{}\\
+	\texttt{number = 10}\\
+	\texttt{function()}\\
+	\texttt{print(number)}\\
+	\\
+	\textit{Download this code \href{https://drive.google.com/file/d/1sQnFHCpxLDIN5dmPq6_MD5BBHTwZ7nWW/view?usp=sharing}{here}}\\
+	\textit{If you get stuck, check out slides 28-39 of \href{https://drive.google.com/file/d/1JaWlzzRu-zYkWhKuV-HUDDozrkTxkhDF/view?usp=sharing}{this lecture}}
+	\item The following code produces an error. Explain what the error is and how to resolve it.\\
+	\texttt{PI = 3.14}\\
+	\texttt{}\\
+	\texttt{def calc\_area(radius):}\\
+	\null\quad\texttt{result = PI * radius**2}\\
+	\null\quad\texttt{return result}\\
+	\texttt{}\\
+	\texttt{r = float(input("Enter the radius: "))}\\
+	\texttt{calc\_area(r)}\\
+	\texttt{}\\
+	\texttt{print("The area is",result)}\\
+	\textit{Download this code \href{https://drive.google.com/file/d/1Cf0E09AdTFsikiw1ZwRMCrNBiXry5d4x/view?usp=sharing}{here}}\\
+	\textit{If you get stuck, check out slides 50-62 of \href{https://drive.google.com/file/d/1JaWlzzRu-zYkWhKuV-HUDDozrkTxkhDF/view?usp=sharing}{this lecture}}
+\end{enumerate}
+
+\section*{Writing Programs}
+Don't worry about the style and readability guidelines for these programs.
+\begin{enumerate}
+	\item Use the functions and variables defined in the \texttt{math} module to write the following program: Have the user enter a vector in the form of a magnitude and an angle (in degrees) ($<r,\phi>$), and then convert this polar vector to cartesian coordinates $<x,y>$ via: $x=r\cos\phi$, $y=r\sin{\phi}$. Remember that the trig functions in the \texttt{math} module expect the argument to be in radians. You can use other functions in this module to perform that conversion.
+	
+	\textit{Tip: To view a summary of the math module, import the math module and then run help(math)}
+	
+	\item Write three functions: \texttt{pow1(x,y)}, \texttt{pow2(x,y)}, and \texttt{pow3(x,y)} to perform the operation $x^y$ three different ways:
+	\begin{enumerate}
+		\item \texttt{pow1(x,y)}: Simply return \texttt{x**y}
+		\item \texttt{pow2(x,y)}: Return \texttt{math.pow(x,y)}
+		\item \texttt{pow3(x,y)}: Write your own algorithm which doesn't use the \texttt{**} operator or any Python modules. \textit{Hint: A number raised to a power is nothing more than repeated multiplication. $2^4$ is just $2\cdot2\cdot2\cdot2$, $5^6=5\cdot5\cdot5\cdot5\cdot5\cdot5$, etc.}
+	\end{enumerate}
+	Now use the \texttt{time} module to rank the three functions from fastest to slowest. \textit{To get a reliable estimate for the time of a process, it is best to measure the time it takes for a process to repeat many thousands of times, and then divide the time by the number of repetitions.}
+	\item Write a program which prompts the user to enter the length and width of two rectangles (so four numbers in total) and then tell the user if their areas are equal.
+	\item In this problem we will write a program to investigate the \href{https://en.wikipedia.org/wiki/Collatz_conjecture}{Collatz problem}. Write a function named \texttt{collatz(number)} that has one parameter (\texttt{number}). The function should do the following:
+	\begin{enumerate}
+		\item If \texttt{number} is \textit{even}: calculate the integer quotient$^*$ of \texttt{number/2}, print this value, and return it.
+		\item If \texttt{number} is \textit{odd}: print and return the value 3 * number + 1.
+	\end{enumerate}
+	Once you have written this function, write a program which asks the user to enter any number (make sure you convert it to an integer). Pass that number as an argument to \texttt{collatz()}, then send the result of this operation back again as an argument to \texttt{collatz()}, then call \texttt{collatz()} again with \textit{this} result. If you continue in this way long enough, then \texttt{collatz()} will eventually evaluate to 1. Amazingly, this seems to be true for any starting integer number, and no one is sure why! Write a loop which continues this process until you reach the number 1.
+\end{enumerate}
+$^*$By integer quotient, I simply mean the integral part of the result of the division operation (rounding down). For example, if \texttt{number} is 23, then $23/2=11.5$, so we would return $11$.
+\end{document}

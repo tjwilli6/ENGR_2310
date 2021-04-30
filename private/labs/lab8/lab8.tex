@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage[margin=1.5cm,bottom=2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage[export]{adjustbox}
+\pagestyle{fancy}
+
+\hypersetup{colorlinks=true,urlcolor=blue,urlbordercolor=blue}
+\begin{document}
+\fancyhead[L]{ \includegraphics[width=2cm]{../au_logo.png} }
+\fancyhead[R]{ENGR 2310: Computational Problem Solving}
+\fancyfoot[C]{\thepage}
+\vspace*{0cm}
+\begin{center}
+	{\LARGE \textbf{Lab 8}}\\
+	\vspace{.25cm}
+	%{\Large Basic Python}
+	%\vspace{0.25cm}
+	%{\Large Due: Friday, September 4}
+\end{center}
+
+\begin{enumerate}
+	\item Write some code to plot the function $y(t) = e^{-t^2/5}$ from $t=0$ to $t=20$.\footnote{I didn't specify $\Delta t$ or the number $n$ of points. You get to decide. There is a tradeoff here: you want $\Delta t$ to be small enough that the curve is smooth and individual points are hard to notice. However, note that the number of loops needed is proportional to $1/\Delta t$, so you don't want $\Delta t$ to be so small that your program wastes time on an unnecessary number of computations. If you are unsure, play around with different values until you find a good compromise.} Do this twice:
+	\begin{enumerate}
+		\item Once the ``old fashioned way'' using only built in Python lists
+		\item Again using numpy \textbf{without using lists}
+		\begin{enumerate}
+			\item Write the values of $t$ and $f(t)$ to a text file
+		\end{enumerate}
+	\end{enumerate}
+	\item This exercise will serve as an example to familiarize you with numpy and with reading data files. It is organized as a step-by-step tutorial.
+	
+	 To start, download the file named \href{https://drive.google.com/file/d/1lz4FUpurVnJLiNGjxm2FzYb0RvjCXiRE/view?usp=sharing}{``radioactive\_decay.txt''} from Google Drive. This file contains (artificial) data which show the radioactive decay of a certain element as a function of time. In particular, each line of the file specifies the elapsed time (in years) and the amount of material remaining (in kg). From this information, you will estimate the half-life of the element (the time it takes for 50\% of the material to decay.) You don't need to submit separate answers for each part, just submit the final product.
+	 \begin{enumerate}
+	 	\item Write code to read the lines of the file (do not use numpy for file reading, do it yourself!). The end result should be two lists of floating point numbers (one containing time, another mass)
+	 	\item To get an idea of what the data looks like, plot mass vs time
+	 	\item We now wish to find the time value for which the mass is most nearly half of its starting value (the half life). This is very easy using numpy. 
+	 	\item First, convert both lists to numpy arrays
+	 	\item We want to find the array index of the mass array for which the mass is closest to mass[0]/2. To do this: create a new array which is the absolute value of mass - mass[0]/2 (use np.abs).
+	 	\item We now want to find the array index for which this new array is at its minimum. Numpy arrays have a method which does this for you: argmin(). This index also corresponds to the value in the time array for which the absolute value of mass - mass[0]/2 is minimal. So you can use this index to print the corresponding time value, and you have your answer.
+	 \end{enumerate}
+\end{enumerate}
+\end{document}

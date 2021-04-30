@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage[margin=1.5cm,bottom=2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage[export]{adjustbox}
+\pagestyle{fancy}
+
+\hypersetup{colorlinks=true,urlcolor=blue,urlbordercolor=blue}
+\begin{document}
+\fancyhead[L]{ \includegraphics[width=2cm]{../au_logo.png} }
+\fancyhead[R]{ENGR 2310: Computational Problem Solving}
+\fancyfoot[C]{\thepage}
+\vspace*{0cm}
+\begin{center}
+	{\LARGE \textbf{Lab 10: Euler's Method}}\\
+	\vspace{.25cm}
+	%{\Large Basic Python}
+	%\vspace{0.25cm}
+	%{\Large Due: Friday, September 4}
+\end{center}
+In today's lab, you will write code to visualize the radioactive decay of a given element. Recall that, for any radioactive material, the mass loss rate is given by:
+\begin{equation*}
+	\frac{dN}{dt}=-\frac{1}{\tau}N
+\end{equation*} The user will specify the half life of the element $t_{half}$ and the initial mass $N_0$; the decay constant $\tau$ is then $\frac{t_{half}}{\ln{2}}$. Given this information, you will calculate $N(t)$ from $t=0$ to $t=3\tau$, in steps of $\Delta t=\tau/100$. Finally, display a plot of your result. To check your answer, be sure that the plot looks like a \href{https://en.wikipedia.org/wiki/Exponential_decay}{decaying exponential} and that the time at which $N\approx N_0/2$ corresponds to the half life entered by the user (you can just check this by eye). You don't need to worry about uncertainty in this assignment, as we haven't talked about that yet (but it does exist!)
+
+The section below contains a step-by-step tutorial if you get stuck.
+\section*{(Optional) Step by Step Tutorial}
+\begin{enumerate}
+	\item Start by writing a Python function for the derivative of $N$, $\frac{dN}{dt}$, which is a function of $N$ and $\tau$. In this tutorial, I'll refer to this function as \texttt{deriv}, but you can name it anything you want.
+	\item Now for the bread and butter of the program: the function to perform the integration. The way I'm writing my code, I will create a function to populate numpy arrays for the time $t$ and the function values $N(t)$, and return them. The function should depend on $t_i$, $t_f$, $\Delta t$, $N_0$ (the initial amount of material) and $\tau$, the decay constant needed for \texttt{deriv}.
+	\begin{enumerate}
+		\item In this function, you are keeping a running total of the amount of material $N$ as a function of time. You will need a variable to track the value of $N$, which should be initialized to $N_0$.
+		\item Write a loop to iterate over values of $t$, starting at $t_i$, stopping at $t_f$, and incrementing in steps of $\Delta t$
+		\item Inside the loop: first calculate $\frac{dN}{dt}$ using your current value of $N$, and then update your $N$ value:\\ $N_{new}=N_{old}+\frac{dN}{dt}\Delta t$
+		\item Store every value of $N$ and $t$ in a list or a numpy array (including the initial values!)
+		\item Finally, finish the loop and return the lists
+	\end{enumerate}
+	\item You should know how to code everything else. In \texttt{main()}, prompt the user for $\tau$ and $N_0$. Call your integration function above and plot the resulting arrays. You can do the plotting directly inside of \texttt{main()}, or from a dedicated plotting function, I don't care.
+\end{enumerate}
+\end{document}

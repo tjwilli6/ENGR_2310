@@ -1,0 +1,70 @@
+\documentclass{article}
+\usepackage[margin=1.5cm,bottom=2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage[export]{adjustbox}
+\pagestyle{fancy}
+
+\hypersetup{colorlinks=true,urlcolor=blue,urlbordercolor=blue}
+\begin{document}
+\fancyhead[L]{ \includegraphics[width=2cm]{../au_logo.png} }
+\fancyhead[R]{ENGR 2310: Computational Problem Solving}
+\fancyfoot[C]{\thepage}
+\vspace*{0cm}
+\begin{center}
+	{\LARGE \textbf{Lab 7}}\\
+	\vspace{.25cm}
+	%{\Large Basic Python}
+	%\vspace{0.25cm}
+	%{\Large Due: Friday, September 4}
+\end{center}
+
+\begin{enumerate}
+	\item Here is some Python code to create a list of the eight planets:\\ \\
+	\texttt{planets = ["Mercury","Venus","Earth","Mars","Jupiter","Saturn","Uranus","Neptune"]}\\
+	\begin{enumerate}
+		\item Write a line of code to print the fourth planet, which should be ``Mars'' (don't just print ``Mars'', access the element from inside the list)
+		\item Write some code to tell you the position of ``Saturn'' within the list
+		\item A new planet is discovered! It is named ``Minerva'' (after another Roman god). The planet orbits past Neptune. Write some code to add this planet to the ``planets'' list.
+		\item The planet ``Earth'' is to be renamed to ``Terra''. Write some code to make this happen.
+		\item ``Mars'' was ``accidentally'' destroyed by Elon Musk. Write some code to remove it from the list.
+		\item Write some code to loop over every planet in the list and print its position and name. Example output:\\
+		Planet 1 is Mercury\\Planet 2 is Venus\\etc...
+	\end{enumerate}
+	\item Write a Python program to plot the first $N$ terms of the Fibonacci sequence (term value on the y axis, term number on the x). $N$ is supplied by the user. Make sure to label your axes!
+	\item A physics student is measuring the acceleration vs mass for a cart being pulled by a constant force. Here is her data:\\
+	\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		Mass [kg]&Acceleration [m$\cdot$s$^{-1}$]\\
+		\hline
+		0.1&302.6\\
+		\hline
+		0.2&147.3\\
+		\hline 
+		0.3&97.6\\
+		\hline 
+		0.4&72.7\\
+		\hline
+		0.5&62.8\\
+		\hline
+		0.6&46.4\\
+		\hline 
+		0.7&42.5\\
+		\hline
+		0.8&38.8\\
+		\hline
+		0.9&34.6\\
+		\hline
+		1.0&29.3\\
+		\hline
+	\end{tabular}
+	\end{center}
+	Make a graph of acceleration vs mass. You should use a scatter plot to show data points like this. Calculate the average acceleration and plot it as a horizontal line using the \href{https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axhline.html}{pyplot.axhline} function
+	\item Modify your projectile motion code (homework 2) so that it graphs $x_{max}$ vs $\theta$ (like what I showed in class). Make sure to label your axes. Add a vertical line (you can use \href{https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axvline.html}{pyplot.axvline}) to show which $\theta$ value maximizes $x_{max}$.
+\end{enumerate}
+\end{document}

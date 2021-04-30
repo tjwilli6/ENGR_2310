@@ -1,0 +1,77 @@
+\documentclass{article}
+\usepackage[margin=1.5cm,bottom=2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+\pagestyle{fancy}
+\usepackage{multicol}
+
+
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+	language=Python,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=none,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3
+}
+
+\begin{document}
+\fancyhead[L]{ \includegraphics[width=2cm]{au_logo.png} }
+\fancyhead[R]{ENGR 2310: Computational Problem Solving}
+\fancyfoot[C]{\thepage}
+\vspace*{0cm}
+\begin{center}
+	{\LARGE \textbf{Quiz 3}}\\
+	\vspace{.25cm}
+	%{\Large Conditional Logic}
+	%\vspace{0.25cm}
+	%{\Large Due: Friday, September 4}
+\end{center}
+
+\begin{enumerate}
+	\item Write a function with three parameters ($a$, $b$, and $x$). Have the function return \texttt{True} if $a\leq x\leq b$, and \texttt{False} otherwise.
+	\vspace{2cm}
+	
+	\item Consider the following code snippet:
+	\begin{lstlisting}
+val = int(input())
+if val < 10:
+	if val != 5:
+		print("wow")
+	else:
+		val += 1
+else:
+	if val == 17:
+		val += 10
+	else:
+		print("whoa")
+print(val)
+	\end{lstlisting}
+	What will the program print if the user provides the following input?
+	\begin{enumerate}
+		\item 3
+		\item 21
+		\item 5
+		\item 17
+	\end{enumerate}
+
+	\item Write some code to calculate the sum of the first $n$ integers, where $n$ is specified by the user (for example: if $n=5$, the result should be $1+2+3+4+5=15$)
+\end{enumerate}
+\end{document}

@@ -1,0 +1,89 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Mar 18 19:34:40 2021
+
+@author: tjwilli
+"""
+import random
+import matplotlib.pyplot as plt
+import math
+
+RAD = 1
+L = 2
+W = 2
+
+def in_circle(x,y,radius):
+    if x**2 + y**2 < radius**2:
+        return True
+    return False 
+
+def estimate_area(radius,N,l,w):
+    x = []
+    y = []
+    
+    total = 0
+    for i in range(N):
+        x = random.uniform(-w/2,w/2)
+        y = random.uniform(-l/2,l/2)
+        if in_circle(x,y,radius):
+            total += 1
+            
+    frac_inside = total / N
+    area = l * w * frac_inside
+    d_area = l * w / N**0.5
+    return area, d_area 
+
+def estimate_pi(N,radius,l,w):
+    area,d_area = estimate_area(radius,N,l,w)
+    pi = area / radius**2
+    d_pi = d_area / radius**2
+    return pi,d_pi
+
+def run_mode_1():
+    N = int( input("How many points should I use to estimate pi? ") )
+    pi,dpi = estimate_pi(N,RAD,L,W)
+    numdigits = len(str(N)) - 1
+    pi = round(pi,numdigits)
+    dpi = round(dpi,numdigits)
+    print("Using {} points, my estimate for pi is: {}+-{}".format(N,pi,dpi))
+
+def run_mode_2():
+    result = input("Enter Nmin, Nmax, N (separated by commas) ")
+    nmin,nmax,n = result.split(",")
+    nmin = int(nmin)
+    nmax = int(nmax)
+    n = int(n)
+    
+    dn = (nmax - nmin) / (n-1)
+    
+    n_list = []
+    p_list = []
+    niter = nmin
+    while niter <= nmax:
+        pi,dpi = estimate_pi(niter,RAD,L,W)
+        n_list.append(niter)
+        p_list.append(pi)
+        niter = round(niter + dn)
+    
+    plt.plot(n_list,p_list,c='green',marker='o')
+    #if (math.log10(nmax-nmin) >= 3):
+    #    plt.xscale('log')
+    plt.axhline(math.pi,c='blue',ls='--')
+    plt.xlabel("N")
+    plt.ylabel("pi estimate")
+    plt.show()
+
+def main():
+    print("What do you want the program to do?")
+    print("Input [1] to have the program estimate pi using a set number of random points.")
+    print("Input [2] to have the program plot an estimate of pi vs number of points.")
+    mode = input("Which mode? 1 or 2: ")
+    
+    if mode == "1":
+        run_mode_1()
+    else:
+        run_mode_2()
+        
+        
+main()

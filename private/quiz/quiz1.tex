@@ -1,0 +1,83 @@
+\documentclass{article}
+\usepackage[margin=1.5cm,bottom=2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+\pagestyle{fancy}
+\usepackage{multicol}
+
+\begin{document}
+\fancyhead[L]{ \includegraphics[width=2cm]{au_logo.png} }
+\fancyhead[R]{ENGR 2310: Computational Problem Solving}
+\fancyfoot[C]{\thepage}
+\vspace*{0cm}
+\begin{center}
+	{\LARGE \textbf{Quiz 1}}\\
+	\vspace{.25cm}
+	%{\Large Conditional Logic}
+	%\vspace{0.25cm}
+	%{\Large Due: Friday, September 4}
+\end{center}
+
+\begin{enumerate}
+	\item Consider the following program. What will be printed if the user enters ``5" for the radius? (You may use a calculator).\\
+\texttt{r = 0}\\
+\texttt{PI = 3.14 \#Close enough!}\\
+\texttt{}\\
+\texttt{\# Formula for the perimeter of a circle given its radius}\\
+\texttt{C = 2 * PI * r}\\
+\texttt{}\\
+\texttt{\# Get the radius from the user}\\
+\texttt{r = float(input("Enter the circle's radius: "))}\\
+\texttt{}\\
+\texttt{\# Print the circumference}\\
+\texttt{print("Circumference is ", C)}\\
+
+\item What is the result of each expression?\\
+\begin{enumerate}
+	\item \texttt{(5 > 4) and (3 == 5)}
+	\item \texttt{not (5 > 4) }
+	\item \texttt{(5 > 4) or (3 == 5)}
+	\item \texttt{not ((5 > 4) or (3 == 5))}
+	\item \texttt{(True and True) and (True == False)}
+	\item \texttt{(not False) or (not True)}
+\end{enumerate}
+\item In the following program, \texttt{i,j} and \texttt{k} are variables which have been previously assigned to. \\
+\texttt{if  i < j:}\\
+\null\quad\texttt{if j < k:}\\
+\null\quad\quad\texttt{i=j}\\
+\null\quad\texttt{else:}\\
+\null\quad\quad\texttt{j=k}\\
+\texttt{else:}\\
+\null\quad\texttt{if j > k:}\\
+\null\quad\quad\texttt{j=i}\\
+\null\quad\texttt{else:}\\
+\null\quad\quad\texttt{i=k}\\
+\texttt{print("i =", i, " j =", j, " k =", k)}\\
+What will the code print if the variables \texttt{i,j} and \texttt{k} have the following values?
+\begin{enumerate}
+	\item \texttt{i=3, j=5, k=7}
+	\item \texttt{i=5, j=7, k=3}
+	\item \texttt{i=7, j=3, k=5}
+\end{enumerate}
+\item Are the following programs equivalent?
+\begin{multicols}{2}
+\begin{enumerate}
+	\item \texttt{user\_input = 1}\\
+	\texttt{while user\_input \% 2:}\\
+		\null\quad\texttt{user\_input = int(input("Enter a number"))}\\
+		\null\quad\texttt{if user\_input \% 2 == 1:}\\
+			\null\quad\quad\texttt{continue}\\
+			\null\quad\texttt{print("You entered an even number!")}\\
+			\texttt{}\\
+	\item \texttt{while True:}\\
+	\null\quad\texttt{user\_input = int(input("Enter a number"))}\\
+	\null\quad\texttt{if user\_input \% 2 == 0:}\\
+		\null\quad\quad\texttt{print("You entered an even number!")}\\
+		\null\quad\quad\texttt{break}\\
+		\null\quad\texttt{continue}\\
+		\null\quad\quad\texttt{}\\
+\end{enumerate}
+\end{multicols}
+\end{enumerate}
+\end{document}

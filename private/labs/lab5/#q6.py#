@@ -1,0 +1,6 @@
+name = "Abed"
+
+def printname():
+    print(name)
+
+printname()

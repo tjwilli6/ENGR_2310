@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage[margin=1.5cm,bottom=2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage[export]{adjustbox}
+\pagestyle{fancy}
+
+\hypersetup{colorlinks=true,urlcolor=blue,urlbordercolor=blue}
+\begin{document}
+\fancyhead[L]{ \includegraphics[width=2cm]{../au_logo.png} }
+\fancyhead[R]{ENGR 2310: Computational Problem Solving}
+\fancyfoot[C]{\thepage}
+\vspace*{0cm}
+\begin{center}
+	{\LARGE \textbf{Lab 9}}\\
+	\vspace{.25cm}
+	%{\Large Basic Python}
+	%\vspace{0.25cm}
+	%{\Large Due: Friday, September 4}
+\end{center}
+In today's lab, you will write the code I showed in class to integrate a function using a Riemann summation. The steps below will gently guide you through this so you understand every part of the program. I will only grade based on the final result: which is a program that prompts the user to enter the bounds of integration and the number of rectangles, and then prints out the estimated integral and its uncertainty. If you feel like you know what you're doing, you don't necessarily need to follow each of these steps one by one.
+\begin{enumerate}
+	\item The first thing you will do is write Python functions to code the function $f(x)$ and its derivative $f'(x)$. Use two separate Python functions for this. 
+	
+	To start out, choose a function whose integral you know (so you can verify your answer). I'm going to use $f(x)=x^3$ ($f'(x)=3x^2$).
+	\item Later on, we'll add a function to calculate the uncertainty of our estimate, but let's write our main integration code first. We will put this inside of a function as well.
+	\begin{enumerate}
+		\item Your integration function should have 3 parameters (where to start and stop integrating and the number of rectangles to use)
+		\item We want to write code to evaluate the sum: 
+		\begin{equation*}
+			f(x_1)\Delta x + f(x_2)\Delta x + f(x_3)\Delta x+\ldots+f(x_k)\Delta x+\ldots+f(x_n)\Delta x = \sum_{k=1}^{n}f(x_k)\Delta x
+		\end{equation*}
+		where $x_k$ is the left edge of the $k^{th}$ rectangle and $n$ is the number of rectangles. If we know our integration limits $x_i$ and $x_f$, then we know $\Delta x=\frac{x_f-x_i}{n}$. We know the function $f(x)$, all we need is to figure out what $x_k$ is (what is $x$ coordinate of the left edge of the $k^{th}$ rectangle?)
+		
+		Clearly, our first rectangle will start at $x_i$ (the lower integration bound) and end at $x_i+\Delta x$. So $x_1$, the left edge of the first rectangle, is just $x_i$. The left edge of the second rectangle is at the same location as the right edge of the first rectangle: $x_2=x_i+\Delta x$
+		\begin{enumerate}
+			\item We see that $x_1=x_i+0\cdot\Delta x$, $x_2=x_i+\Delta x$, $x_3=x_i+2\Delta x$, etc... What is $x_k$? Given $x_i$, $x_f$, and $n$, see if you can write a loop (inside the integrate function) which will print out the location of the left edge of every rectangle, and then test your code. To check your result, be sure that: the left edge of your first rectangle is the same as $x_i$, the left edge of your final rectangle is smaller than $x_f$, and the loop prints out exactly $n$ many numbers.
+			\item Once you are satisfied with your loop from the previous part, add in code to call your earlier function to calculate $f(x_k)$ at the left edge of each rectangle. Multiply by $\Delta x$ to get the area of the rectangle, and add all of these areas together to get your final estimate. Return this value.
+		\end{enumerate}
+	\end{enumerate}
+	\item Let's write our \texttt{main} function before we start the uncertainty calculation; that way you can start to test your code.
+	\begin{enumerate}
+		\item In \texttt{main}, prompt the user to tell you $x_i$, $x_f$, and $n$. Then call your integrate function and print the result.
+		\item Test your code for a few different values of $n$ to verify that it's working properly.
+	\end{enumerate}
+	\item Now we will add in some code to calculate the uncertainty $|E|\leq\frac{1}{2}M\frac{(x_f-x_i)^2}{n}$. Create a new function to do this which has the parameters $x_i$, $x_f$, and $n$ (we will find $M$ inside the function).
+	\begin{enumerate}
+		\item Inside of the uncertainty function, write some code to find (or at least estimate) the maximum value of $|f'(x)|$ over the interval $(x_i,x_f)$. This is $M$.
+		\item Now you have $x_i$,$x_f$,$n$, and $M$. Calculate $|E|$ using the equation above and return this value.
+	\end{enumerate}
+	\item Modify your program so that is prints the uncertainty along with the estimate. You can either call your uncertainty function directly from \texttt{main} and print the value, or call it from inside of your integrate function and modify that function to return two values.
+\end{enumerate}
+\end{document}

@@ -1,0 +1,4 @@
+emf: 3.0
+capacitance: 1e-4
+resistance: 100
+inductance: 1e-3
